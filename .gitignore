@@ -1,0 +1,5 @@
+*.csproj.user
+**/obj/x86/Debug
+**/obj/x86/Release
+**/bin/Debug
+**/bin/Release
