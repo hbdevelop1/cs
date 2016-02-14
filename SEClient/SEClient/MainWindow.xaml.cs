@@ -25,9 +25,9 @@ namespace SEClient
 
 
             List<Order> items = new List<Order>();
-            items.Add(new Order() { side = Side.buy, symbol = "MS"});
-            items.Add(new Order() { side = Side.buy, symbol = "IBM" });
-            items.Add(new Order() { side = Side.buy, symbol = "BOI" });
+            items.Add(new Order() { side = Side.buy.ToString(), symbol = "MS"});
+            items.Add(new Order() { side = Side.buy.ToString(), symbol = "IBM" });
+            items.Add(new Order() { side = Side.buy.ToString(), symbol = "BOI" });
 
             ordersList.ItemsSource = items;
         }
@@ -47,9 +47,33 @@ namespace SEClient
         }
         public class Order
         {
-            public Side side; 
+            public string side { get; set; } 
             public string symbol { get; set; }
             public string fills { get; set; }
+
+            public Order(Side s = Side.undefined, string sym = "undef symbol", string f = "n/a")
+            {
+                side=s.ToString(); //todo: side as Side and still be able to associate it to a grid element in xaml 
+                symbol=sym;
+                fills = f;
+            }
+
+        }
+
+    }
+    /*
+    public static class util
+    {
+        public static string ToString(this MainWindow.Side side)
+        {
+            if (side == MainWindow.Side.buy)
+                return "buy";
+            else if (side == MainWindow.Side.sell)
+                return "sell";
+            else
+                return "undef";
         }
     }
+    */
+
 }
